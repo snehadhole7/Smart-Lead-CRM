@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Smart Lead & Customer Management System
 
 This workspace contains a starter project for a CRM with a React frontend and a placeholder C++ backend.
@@ -29,3 +30,6 @@ This workspace contains a starter project for a CRM with a React frontend and a 
 - A plain HTML/CSS/JavaScript website is also available in the `website/` folder.
 - To use the static website, open `website/index.html` in a browser and ensure the backend is running at `http://127.0.0.1:4000`.
 - Use `frontend/.env` to configure the React app API base URL if needed.
+=======
+# Smart-Lead-CRM
+>>>>>>> d78f655df81321889259da8853570afe3b4fa838
