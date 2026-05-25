@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Lead CRM</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand">Smart Lead CRM</div>
+        <button id="nav-dashboard" class="nav-btn active">Dashboard</button>
+        <button id="nav-leads" class="nav-btn">Leads</button>
+        <button id="nav-customers" class="nav-btn">Customers</button>
+        <button id="nav-reports" class="nav-btn">Reports</button>
+        <button id="logoutBtn" class="nav-btn danger">Logout</button>
+      </aside>
+
+      <main class="content">
+        <section id="loginSection" class="view-section">
+          <h1>CRM Login</h1>
+          <p>Use email/password, phone/password, or request an OTP by email or phone.</p>
+          <div class="form-grid">
+            <button id="showSignupBtn" class="link-button" type="button">New user? Create a signup account</button>
+            <label>Email or Phone Number</label>
+            <input id="loginIdentifier" type="text" value="admin@example.com" placeholder="admin@example.com or +15550100" />
+            <label>Password</label>
+            <input id="password" type="password" value="Password123" />
+            <button id="loginBtn" class="primary">Login</button>
+            <div class="divider">or login with OTP</div>
+            <label>Send OTP By</label>
+            <div class="choice-row" role="group" aria-label="OTP delivery option">
+              <label class="choice-option">
+                <input type="radio" name="otpChannel" value="email" checked />
+                Email
+              </label>
+              <label class="choice-option">
+                <input type="radio" name="otpChannel" value="phone" />
+                Phone Number
+              </label>
+            </div>
+            <button id="sendOtpBtn" class="secondary" type="button">Send OTP</button>
+            <label>OTP Code</label>
+            <input id="otpCode" type="text" inputmode="numeric" placeholder="Enter 6 digit OTP" />
+            <button id="verifyOtpBtn" class="primary" type="button">Verify OTP & Login</button>
+            <div id="otpInfo" class="info-message hidden"></div>
+            <div id="loginError" class="error-message hidden"></div>
+          </div>
+        </section>
+
+        <section id="signupSection" class="view-section hidden">
+          <h1>CRM Signup</h1>
+          <p>Create an account with email, phone number, and password.</p>
+          <div class="form-grid">
+            <button id="showLoginBtn" class="link-button" type="button">Already have an account? Login</button>
+            <label>Full Name</label>
+            <input id="signupName" type="text" placeholder="Your name" />
+            <label>Email</label>
+            <input id="signupEmail" type="email" placeholder="name@example.com" />
+            <label>Phone Number</label>
+            <input id="signupPhone" type="tel" placeholder="+15550100" />
+            <label>Signup OTP By</label>
+            <div class="choice-row" role="group" aria-label="Signup OTP delivery option">
+              <label class="choice-option">
+                <input type="radio" name="signupOtpChannel" value="email" checked />
+                Email
+              </label>
+              <label class="choice-option">
+                <input type="radio" name="signupOtpChannel" value="phone" />
+                Phone Number
+              </label>
+            </div>
+            <button id="sendSignupOtpBtn" class="secondary" type="button">Send Signup OTP</button>
+            <label>Signup OTP Code</label>
+            <input id="signupOtpCode" type="text" inputmode="numeric" placeholder="Enter 6 digit signup OTP" />
+            <button id="verifySignupOtpBtn" class="primary" type="button">Verify Signup OTP</button>
+            <label>Role</label>
+            <select id="signupRole">
+              <option value="salesperson">Salesperson</option>
+              <option value="manager">Manager</option>
+              <option value="admin">Admin</option>
+            </select>
+            <label>Password Option</label>
+            <div class="choice-row" role="group" aria-label="Password option">
+              <label class="choice-option">
+                <input type="radio" name="passwordMode" value="recommended" checked />
+                Recommended
+              </label>
+              <label class="choice-option">
+                <input type="radio" name="passwordMode" value="own" />
+                Choose Own
+              </label>
+            </div>
+            <div class="inline-actions">
+              <input id="signupPassword" type="text" placeholder="Password" />
+              <button id="generatePasswordBtn" class="secondary" type="button">Recommend Password</button>
+            </div>
+            <button id="signupBtn" class="primary" type="button">Signup & Login</button>
+            <div id="signupInfo" class="info-message hidden"></div>
+            <div id="signupError" class="error-message hidden"></div>
+          </div>
+        </section>
+
+        <section id="dashboardSection" class="view-section hidden">
+          <h1>Dashboard</h1>
+          <p id="welcomeText">Welcome back!</p>
+          <div class="stats-grid">
+            <div class="stat-card"><h3>Total Leads</h3><p id="totalLeads">0</p></div>
+            <div class="stat-card"><h3>Total Customers</h3><p id="totalCustomers">0</p></div>
+            <div class="stat-card"><h3>Follow-ups</h3><p id="followUps">0</p></div>
+            <div class="stat-card"><h3>Conversion Rate</h3><p id="conversionRate">0%</p></div>
+          </div>
+        </section>
+
+        <section id="leadsSection" class="view-section hidden">
+          <h1>Lead Forms</h1>
+          <div class="form-grid">
+            <label>Lead Name</label>
+            <input id="leadName" type="text" placeholder="John Doe" />
+            <label>Company</label>
+            <input id="leadCompany" type="text" placeholder="Acme Corp" />
+            <label>Contact</label>
+            <input id="leadContact" type="text" placeholder="+1 555 0100" />
+            <label>Status</label>
+            <select id="leadStatus">
+              <option>New</option>
+              <option>Contacted</option>
+              <option>Qualified</option>
+              <option>Lost</option>
+            </select>
+            <button id="saveLeadBtn" class="primary">Save Lead</button>
+            <div id="leadError" class="error-message hidden"></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Company</th><th>Contact</th><th>Status</th></tr>
+              </thead>
+              <tbody id="leadsTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="customersSection" class="view-section hidden">
+          <h1>Customer Details</h1>
+          <div id="customerError" class="error-message hidden"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Status</th></tr>
+              </thead>
+              <tbody id="customersTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="reportsSection" class="view-section hidden">
+          <h1>Reports & Analytics</h1>
+          <div class="stats-grid">
+            <div class="stat-card"><h3>Total Leads</h3><p id="reportLeads">0</p></div>
+            <div class="stat-card"><h3>Total Customers</h3><p id="reportCustomers">0</p></div>
+            <div class="stat-card"><h3>Follow-up Leads</h3><p id="reportFollowUps">0</p></div>
+            <div class="stat-card"><h3>Conversion Rate</h3><p id="reportConversionRate">0%</p></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
